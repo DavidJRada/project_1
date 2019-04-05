@@ -1,8 +1,8 @@
-* {
-    border: 1px solid black;
-}
+/* * {
+    border: 1px solid indianred;
+} */
 body {
-    /* background-color: rgba(61, 82, 213, 1); */
+    background-color: azure;
 }
 .container {
     display: flex;
@@ -25,14 +25,20 @@ h1 {
 
 .weatherInfo {
     display: flex;
-    flex-direction: column;
+    align-items: space-between;
+    flex-direction: row;
     height: 100px;
-    width: 100px;
-    /* background-color: rgba(251, 233, 228, 1); */
-    /* color: rgb(9, 12, 155); */
-    margin: 10px;
+    width: 100%;
+    border: 1px solid black;
 }
 
+.weatherInfo > div {
+    border: 1px solid black;
+}
+
+.weatherDisplay > div{
+    border: 1px solid black;
+}
 .tasks {
     display: flex;
     flex-direction: column;
@@ -41,23 +47,46 @@ h1 {
     width: 50%;
     margin-left: 15px;
 }
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 10px;
+    padding: 3px;
+    width: 50%;
+}
 
+#input {
+    height: 20px;
+    width: 150px;
+}
+.finishedButton {
+    width: 100px;
+}
 .completedTasks {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 50%;
+    margin: 10px;
+    padding: 3px;
     width: 50%;
-    margin-left: 15px;
 }
 
 .finishedTasks {
-    text-decoration: line-through;
-}
-.toDoItems {
     display: flex;
+    text-decoration: line-through;
     justify-content: space-evenly;
     height: 100%;
     width: 100%;
+    border: 1px solid black;
+    padding: 2px;
+}
+.toDoItems {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
     padding: 2px;
 }
