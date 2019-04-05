@@ -2,7 +2,7 @@
     border: 1px solid black;
 }
 body {
-    background-color: rgba(61, 82, 213, 1);
+    /* background-color: rgba(61, 82, 213, 1); */
 }
 .container {
     display: flex;
@@ -12,13 +12,13 @@ body {
 
 h1 {
     text-align: center;
-    color: rgba(189, 147, 145, 1)
+    /* color: rgba(189, 147, 145, 1) */
 }
 
 .wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap row;
+    justify-content: space-around;
     height: 100%;
     width: 100%;
 }
@@ -28,8 +28,8 @@ h1 {
     flex-direction: column;
     height: 100px;
     width: 100px;
-    background-color: rgba(251, 233, 228, 1);
-    color: rgb(9, 12, 155);
+    /* background-color: rgba(251, 233, 228, 1); */
+    /* color: rgb(9, 12, 155); */
     margin: 10px;
 }
 
@@ -41,9 +41,23 @@ h1 {
     width: 50%;
     margin-left: 15px;
 }
+
 .completedTasks {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     height: 50%;
-    width: 50%
+    width: 50%;
+    margin-left: 15px;
+}
+
+.finishedTasks {
+    text-decoration: line-through;
+}
+.toDoItems {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
 }

@@ -22,10 +22,18 @@ const requestData = () => {
 
 const getTask = () => {
     taskInput = $('#input').val()
+
     let todoItem = $('<div>').addClass('toDoItems').text(taskInput)
+
     todoItem.appendTo('.tasks')
-    let button = $
-    
+
+    let button = $('<button>').addClass('finishedButton').text('FINISHED').on('click', (e) => {
+
+        $(e.currentTarget.parentNode).appendTo('.completedTasks').removeClass('toDoItems').addClass('finishedTasks')
+
+    })
+    button.appendTo(todoItem)
+
 }
 
 $(() => {
