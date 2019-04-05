@@ -22,7 +22,10 @@ const requestData = () => {
 
 const getTask = () => {
     taskInput = $('#input').val()
-    console.log(taskInput)
+    let todoItem = $('<div>').addClass('toDoItems').text(taskInput)
+    todoItem.appendTo('.tasks')
+    let button = $
+    
 }
 
 $(() => {
@@ -31,6 +34,7 @@ $(() => {
         e.preventDefault();
         requestData();
     })
+
     $('form').on('submit', (e) => {
         e.preventDefault()
         getTask()
