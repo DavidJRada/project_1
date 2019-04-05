@@ -1,0 +1,48 @@
+* {
+    border: 1px solid black;
+}
+body {
+    background-color: rgba(61, 82, 213, 1);
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(189, 147, 145, 1)
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.weatherInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+    background-color: rgba(251, 233, 228, 1);
+    color: rgb(9, 12, 155);
+    margin: 10px;
+}
+
+.tasks {
+    display: flex;
+    justify-content: flex-start;
+    height: 50%;
+    width: 50%;
+    margin-left: 15px;
+}
+.completedTasks {
+    display: flex;
+    justify-content: flex-start;
+    height: 50%;
+    width: 50%
+}
