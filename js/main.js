@@ -31,11 +31,19 @@ const requestForecast = () => {
 
         }
     }).then(function (data) {
-        for (let i = 0; i < 5; i++) {
-            console.log(data.list[i])
+        for (let i = 0; i < 2; i++) {
+            // console.log(data.list[i])
             // console.log(data.weather[i].id)
+            let $forecastItem = $('<div>').addClass('forecastItem')
+            let $temp = $('<div>').text(data.list[i].main.temp)
+            let $time = $('<div>').text(((data.list[i].dt_txt).split(' '))[1])
+            console.log($time)
+            
 
-            $('<div>').text(data.list[i].main.temp).appendTo('.forecast')
+            $forecastItem.appendTo('.forecast')
+            $temp.appendTo($forecastItem)
+            $time.appendTo($forecastItem)
+
         }
     })
 }

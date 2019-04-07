@@ -31,6 +31,11 @@ h1 {
     width: 100%;
     border: 1px solid black;
 }
+.forecastItem {
+    display: flex;
+    flex-direction: column;
+    
+}
 
 .weatherInfo > div {
     border: 1px solid black;
