@@ -1,3 +1,4 @@
+
 let city = "Stamford,us";
 
 const weatherIconsObj = {
@@ -11,9 +12,6 @@ const newWeatherItem = () => {
     currentWeather.appendWeather()
 
 }
-
-
-
 
 class WeatherItem {
     constructor(temp, humidity, weather, img) {
@@ -71,10 +69,8 @@ const requestForecast = () => {
 
         }
     }).then(function (data) {
-        // console.log(data)
         //Loop through forecast list data to pull out the main description of the weather
-        for (let i = 0; i < 2; i++) {
-            // console.log(data.list[i])
+        for (let i = 0; i < 5; i++) {
 
             let dateAndTime = (data.list[i].dt_txt).split(' ')
 
@@ -84,7 +80,7 @@ const requestForecast = () => {
             let img = weatherIconsObj[weather]
             let date = dateAndTime[0]
             let time = dateAndTime[1]
-            let $widgetInstance = $('<div>').addClass('forecast' + i)
+            let $widgetInstance = $('<div>').addClass('forecast')
             $widgetInstance.appendTo('.forecastDisplay')
 
             const forecastInstance = new ForecastItem(temp, humidity, weather, img, date, time)
