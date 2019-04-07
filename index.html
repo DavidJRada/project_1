@@ -8,7 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 
-
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        // $(function () {
+        //     $("#datepicker").datepicker();
+        // });
+    </script>
 </head>
 
 <body>
@@ -24,16 +30,19 @@
 
     <div class='header'>
         <div class='inputFields'>
+            <!-- <p>Date: <input type="text" id="datepicker"></p> -->
             <button id=getWeather>
+
                 <h3>Get Current Weather</h3>
             </button>
             <button id=getForecast>
-                    <h3>Forecast</h3>
-                </button>
+                <h3>Forecast</h3>
+            </button>
 
             <form>
                 <br>
                 <input type="text" id='input' placeholder="Add New Task" />
+                <input type="text" id='city' placeholder="Choose City" />
         </div>
     </div>
     <hr>

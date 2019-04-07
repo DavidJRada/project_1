@@ -25,15 +25,16 @@ h1 {
 
 .weatherInfo {
     display: flex;
-    align-items: space-between;
-    flex-direction: row;
-    height: 100px;
-    width: 100%;
-    border: 1px solid black;
+    justify-content: space-between;
+    margin: 0px 15px;
+    height: 200px;
+    width: 250px;
+    /* border: 1px solid black; */
 }
 
 .weatherInfo > div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    height: 100%;
 }
 
 .weatherDisplay > div{

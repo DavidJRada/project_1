@@ -1,6 +1,11 @@
 let city = "Stamford,us";
 let taskInput = '';
 
+
+const getCity = () => {
+    console.log($('#city').val())
+}
+
 const requestData = () => {
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=0d4a536dd84f2c41a282e010c8caaf60",
@@ -76,6 +81,11 @@ $(() => {
         getTask()
     })
 
+    $('city').on('submit', (e) => {
+        e.preventDefault();
+        $('city').empty()
+        getCity();
+    })
 })
 
 
