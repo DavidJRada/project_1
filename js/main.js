@@ -1,9 +1,9 @@
 let city = "Stamford,us";
 
 const weatherIconsObj = {
-    'clouds': 'weather_icons/clouds.png',
+    'Clouds': 'weather_icons/clouds.png',
     'Clear': 'weather_icons/clear.png',
-    'rain': 'weather_icons/rain.png'
+    'Rain': 'weather_icons/rain.png'
 }
 const newWeatherItem = () => {
 
@@ -22,23 +22,24 @@ class WeatherItem {
         this.weather = weather
         this.img = img;
     }
-    appendWeather() {
-        $('<div>').text("Temp: " + this.temp + '°f').appendTo('.currentDisplay')
-        $('<div>').text("Humidity: " + this.humidity + '%').appendTo('.currentDisplay')
-        $('<div>').text("Weather: " + this.weather).appendTo('.currentDisplay')
-        $('<img>').attr('src', this.img).appendTo('.currentDisplay')
+    appendWeather(location) {
+        $('<div>').text("Temp: " + this.temp + '°f').appendTo(location)
+        $('<div>').text("Humidity: " + this.humidity + '%').appendTo(location)
+        $('<div>').text("Weather: " + this.weather).appendTo(location)
+        $('<img>').attr('src', this.img).appendTo(location)
     }
 }
 
 class ForecastItem extends WeatherItem {
-    constructor(date, time, ) {
-        super(date, time)
+    constructor(temp, humidity, weather, img, date, time) {
+        super(temp, humidity, weather, img, date, time);
         this.date = date;
         this.time = time;
     }
-    appendForecastWeather() {
-        $('<div>').text("Date: " + this.date).appendTo('.currentDisplay');
-        $('<div>').text("Time: " + this.time).appendTo('.currentDisplay')
+    appendForecastWeather(location) {
+        $('<div>').text("Time: " + this.time).prependTo(location)
+        $('<div>').text("Date: " + this.date).prependTo(location);
+        this.appendWeather(location)
     }
 }
 
@@ -50,24 +51,17 @@ const requestCurrent = () => {
 
         }
     }).then(function (data) {
-        console.log(data)
         let temp = (Math.floor(data.main.temp))
         let humidity = data.main.humidity
         let weather = data.weather[0].main
         let img = weatherIconsObj[weather]
 
         const currentWeather = new WeatherItem(temp, humidity, weather, img);
-        currentWeather.appendWeather()
+        currentWeather.appendWeather('.currentDisplay')
 
-        
+
     })
 }
-
-        // for (let i = 0; i < (data.weather).length; i++) {
-        //     $('<div>').text('Current weather: ' + data.weather[i].description).appendTo('.currentDisplay')
-        //     // console.log(data.weather[0].description)
-        //     $('<img>').attr('src', (weatherIconsObj[data.weather[0].description])).appendTo('.currentDisplay').css('height', '100px').css('width', '100px')
-
 
 const requestForecast = () => {
     $.ajax({
@@ -79,19 +73,26 @@ const requestForecast = () => {
     }).then(function (data) {
         // console.log(data)
         //Loop through forecast list data to pull out the main description of the weather
-        // for (let i = 0; i < data.list.length; i++) {
-        //     //Store the result of hourly forecast as variable
-        //     let hourlyForecast = data.list[i].weather[0].main
-        //     // for (let j = 0; j < weatherIconsArr.length; j++) {
-        //     if (weatherIconsArr.filter(icon => {
-        //         return icon === hourlyForecast
-        //     }))
+        for (let i = 0; i < 2; i++) {
+            // console.log(data.list[i])
 
+            let dateAndTime = (data.list[i].dt_txt).split(' ')
 
-        //         // return(match)
-        //     }
+            let temp = data.list[i].main.temp
+            let humidity = data.list[i].main.humidity
+            let weather = data.list[i].weather[0].main
+            let img = weatherIconsObj[weather]
+            let date = dateAndTime[0]
+            let time = dateAndTime[1]
+            let $widgetInstance = $('<div>').addClass('forecast' + i)
+            $widgetInstance.appendTo('.forecastDisplay')
+
+            const forecastInstance = new ForecastItem(temp, humidity, weather, img, date, time)
+
+            forecastInstance.appendForecastWeather($widgetInstance);
+
+        }
     })
-
 }
 
 
@@ -106,6 +107,6 @@ $(() => {
 
     $('#getForecast').on('click', (e) => {
         e.preventDefault();
-        requestCurrent();
+        requestForecast();
     })
 })
