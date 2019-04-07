@@ -23,6 +23,10 @@ const requestData = () => {
     })
 }
 
+const weatherIcons = {
+
+}
+
 const requestForecast = () => {
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&APPID=0d4a536dd84f2c41a282e010c8caaf60",
@@ -31,21 +35,33 @@ const requestForecast = () => {
 
         }
     }).then(function (data) {
-        for (let i = 0; i < 2; i++) {
-            // console.log(data.list[i])
-            // console.log(data.weather[i].id)
-            let $forecastItem = $('<div>').addClass('forecastItem')
-            let $temp = $('<div>').text(data.list[i].main.temp)
-            let $time = $('<div>').text(((data.list[i].dt_txt).split(' '))[1])
-            console.log($time)
+        console.log(data)
+        for (let i=0; i<data.list.length; i++) {
+            console.log(data.list[i].weather[0].main)
+        }
+
+
+
+
+
+            // for (let i = 0; i < ; i++) {
+            // for(let j=0; i<(data.list.length); i++)
+            // console.log(data.list.weather[i].main)
+
+
+            // console.log(data[i].forecast.symbol.name)
+            // let $forecastItem = $('<div>').addClass('forecastItem')
+            // let $temp = $('<div>').text(data.list[i].main.temp)
+            // let $time = $('<div>').text(((data.list[i].dt_txt).split(' '))[1])
+            // console.log($time)
             
 
-            $forecastItem.appendTo('.forecast')
-            $temp.appendTo($forecastItem)
-            $time.appendTo($forecastItem)
+            // $forecastItem.appendTo('.forecast')
+            // $temp.appendTo($forecastItem)
+            // $time.appendTo($forecastItem)
 
         }
-    })
+    )
 }
 
 const getTask = () => {
